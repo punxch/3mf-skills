@@ -1,0 +1,4 @@
+# Python 3.12; versions verified when this skill was packaged.
+numpy==2.5.3
+trimesh==5.1.1
+vtk==9.6.2
