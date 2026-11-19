@@ -49,6 +49,7 @@ def render_mesh(vertices, faces, path, *, position=None, focus=None, scale=None,
     camera=renderer.GetActiveCamera();camera.SetPosition(*position);camera.SetFocalPoint(*focus);camera.SetViewUp(*up);camera.ParallelProjectionOn();camera.SetParallelScale(scale)
     window=vtkRenderWindow();window.SetOffScreenRendering(1);window.SetSize(size,size);window.SetMultiSamples(0 if ids else 8);window.AddRenderer(renderer)
     try:
+        renderer.ResetCameraClippingRange()
         window.Render()
         capture=vtkWindowToImageFilter();capture.SetInput(window);capture.ReadFrontBufferOff();capture.Update()
         Path(path).parent.mkdir(parents=True,exist_ok=True)
